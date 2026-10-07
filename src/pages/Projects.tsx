@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import projectCybersecurite from '@/assets/project-cybersecurite.png';
+import projectMFA from '@/assets/project-MFA.png';
 import projectTemperature from '@/assets/project-temperature.png';
 import projectReseau from '@/assets/project-reseau.png';
 import projectSupervision from '@/assets/project-supervision.png';
@@ -24,6 +25,16 @@ const Projects = () => {
       detailsKey: 'project.cyber.details',
       link: "https://www.canva.com/design/DAGQh8EQjn0/ch8vVTu9xtW0kEJTZ6uq5Q/view?utm_content=DAGQh8EQjn0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h7e927ec9b2"
     },
+    {
+      titleKey: 'project.MFA.title',
+      descKey: 'project.MFA.desc',
+      image: projectMFA,
+      color: "bg-blue-500",
+      detailsKey: 'project.MFA.details',
+      link: "https://canva.link/b7rzmsr5egtpkwd"
+    },
+    
+
     {
       titleKey: 'project.temp.title',
       descKey: 'project.temp.desc',

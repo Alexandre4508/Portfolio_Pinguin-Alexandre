@@ -19,7 +19,7 @@ const CV = () => {
               <h1 className="text-4xl font-bold mb-2">{t('cv.title')}</h1>
               <p className="text-xl text-blue-100 mb-4">{t('cv.subtitle')}</p>
               
-              <a href="/CV_Alexandre_Pinguin.pdf" download>
+              <a href="/PINGUIN-Alexandre-CV.pdf" download>
                 <Button className="mb-6 bg-white/20 border border-white/40 text-white hover:bg-white hover:text-primary">
                   <Download size={16} />
                   {t('cv.download')}
@@ -31,13 +31,10 @@ const CV = () => {
                   <Car size={16} className="mr-2" />
                   <span>Permis B - Véhiculé</span>
                 </div>
-                <div className="flex items-center">
-                  <Phone size={16} className="mr-2" />
-                  <span>06 92 63 92 03</span>
-                </div>
-                <div className="flex items-center">
+            
+              <div className="flex items-center">
                   <Mail size={16} className="mr-2" />
-                  <span>alexpinguin450@gmail.com</span>
+                  <span>a.pinguin@rt-iut.re.com</span>
                 </div>
                 <div className="flex items-center">
                   <MapPin size={16} className="mr-2" />
@@ -51,7 +48,7 @@ const CV = () => {
             </div>
           </div>
 
-          <div className="p-8">
+                            <div className="p-8">
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Colonne de gauche */}
               <div className="lg:col-span-1 space-y-6">
@@ -61,9 +58,8 @@ const CV = () => {
                     <User className="text-primary mr-3" size={24} />
                     <h2 className="text-xl font-bold text-primary">{t('cv.profile.title')}</h2>
                   </div>
-                  <p className="text-gray-700 text-sm leading-relaxed">
-                    {t('cv.profile.desc')}
-                  </p>
+                  <p className="text-gray-700 text-sm leading-relaxed">{t('cv.profile.desc')}</p>
+                  <p className="text-gray-700 text-sm mt-3 font-semibold">{t('cv.profile.extra')}</p>
                 </div>
 
                 {/* Qualités */}
@@ -89,23 +85,23 @@ const CV = () => {
                     <h2 className="text-xl font-bold text-primary">{t('cv.languages.title')}</h2>
                   </div>
                   <div className="space-y-3 text-sm">
-                    <div className="flex justify-between">
-                      <span>Français</span>
-                      <span className="text-secondary font-semibold">Maîtrisé</span>
+                    <div>
+                      <div className="flex justify-between">
+                        <span>{t('cv.lang.french')}</span>
+                        <span className="text-secondary font-semibold">{t('cv.lang.french.badge')}</span>
+                      </div>
+                      <p className="text-gray-600 text-xs">{t('cv.lang.french.level')}</p>
                     </div>
                     <div>
-                      <div className="flex justify-between mb-1">
-                        <span>Anglais</span>
-                        <span className="text-secondary font-semibold">A2</span>
-                      </div>
-                      <p className="text-gray-600 text-xs">Débutant</p>
+                      <span>{t('cv.lang.english')}</span>
+                      <p className="text-gray-600 text-xs">{t('cv.lang.english.level')}</p>
                     </div>
                     <div>
                       <div className="flex justify-between">
-                        <span>Espagnol</span>
+                        <span>{t('cv.lang.spanish')}</span>
                         <span className="text-secondary font-semibold">A2</span>
                       </div>
-                      <p className="text-gray-600 text-xs">Débutant</p>
+                      <p className="text-gray-600 text-xs">{t('cv.lang.spanish.level')}</p>
                     </div>
                   </div>
                 </div>
@@ -117,26 +113,12 @@ const CV = () => {
                     <h2 className="text-xl font-bold text-primary">{t('cv.software.title')}</h2>
                   </div>
                   <div className="space-y-3 text-sm">
-                    <div>
-                      <span className="font-semibold text-primary">Réseaux:</span>
-                      <p className="text-gray-700">TCP/IP, VLAN, pfSense, routage, DHCP, DNS</p>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-primary">Supervision:</span>
-                      <p className="text-gray-700">Raspberry Pi, SSH, surveillance locale</p>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-primary">Analyse:</span>
-                      <p className="text-gray-700">ping, traceroute, test de connectivité</p>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-primary">Langages/outils:</span>
-                      <p className="text-gray-700">HTML/CSS, Python, Cisco Packet Tracer, VirtualBox, GLPI</p>
-                    </div>
-                    <div>
-                      <span className="font-semibold text-primary">Matériel:</span>
-                      <p className="text-gray-700">Installation/maintenance de postes, Raspberry Pi</p>
-                    </div>
+                    {['network', 'systems', 'admin'].map((k) => (
+                      <div key={k}>
+                        <span className="font-semibold text-primary">{t(`cv.tech.${k}.title`)}</span>
+                        <p className="text-gray-700">{t(`cv.tech.${k}.desc`)}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
@@ -147,10 +129,10 @@ const CV = () => {
                     <h2 className="text-xl font-bold text-secondary">{t('cv.passions.title')}</h2>
                   </div>
                   <ul className="space-y-2 text-sm">
-                    {['Jeux vidéo', 'Réseaux sociaux', 'Sport'].map((p, i) => (
-                      <li key={i} className="flex items-center">
+                    {[1, 2, 3, 4].map((n) => (
+                      <li key={n} className="flex items-center">
                         <div className="w-2 h-2 bg-secondary rounded-full mr-3"></div>
-                        {p}
+                        {t(`cv.passion.${n}`)}
                       </li>
                     ))}
                   </ul>
@@ -159,76 +141,74 @@ const CV = () => {
 
               {/* Colonne de droite */}
               <div className="lg:col-span-2 space-y-6">
-                {/* Diplômes */}
+                {/* Diplômes / Certifications */}
                 <div>
                   <div className="flex items-center mb-6">
                     <GraduationCap className="text-primary mr-3" size={28} />
                     <h2 className="text-2xl font-bold text-primary">{t('cv.diplomas.title')}</h2>
                   </div>
-                  
+
                   <div className="space-y-6">
-                    <div className="border-l-4 border-primary pl-6">
-                      <h3 className="font-bold text-lg">Deuxième année BUT Réseaux et Télécommunications</h3>
-                      <p className="text-secondary font-semibold">2025 - 2026</p>
-                      <p className="text-gray-600">IUT de la Réunion</p>
-                    </div>
-                    
-                    <div className="border-l-4 border-secondary pl-6">
-                      <h3 className="font-bold text-lg">Bac STL (Sciences et Technologies de Laboratoire)</h3>
-                      <p className="text-secondary font-semibold">2023 - 2024</p>
-                      <p className="text-gray-600">Lycée général et technologique Antoine Roussin, Saint-Louis</p>
-                    </div>
-                    
-                    <div className="border-l-4 border-primary pl-6">
-                      <h3 className="font-bold text-lg">Certification Pix</h3>
-                      <p className="text-secondary font-semibold">2023 - 2024</p>
-                      <p className="text-gray-600">Lycée Général et technologique Antoine Roussin, Saint-Louis</p>
-                    </div>
-                    
-                    <div className="border-l-4 border-secondary pl-6">
-                      <h3 className="font-bold text-lg">Attestation de suivi ANSSI</h3>
-                      <p className="text-secondary font-semibold">2024 - 2025</p>
-                      <p className="text-gray-600">IUT de la Réunion, Saint-Pierre</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Qualités développées */}
-                <div>
-                  <div className="flex items-center mb-6">
-                    <Target className="text-secondary mr-3" size={28} />
-                    <h2 className="text-2xl font-bold text-secondary">{t('cv.skills.title')}</h2>
-                  </div>
-                  
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <p className="text-gray-700 leading-relaxed mb-4">{t('cv.skills.desc1')}</p>
-                    <p className="text-gray-700 leading-relaxed">{t('cv.skills.desc2')}</p>
-                  </div>
-                </div>
-
-                {/* Projets / Expérience */}
-                <div>
-                  <div className="flex items-center mb-6">
-                    <Briefcase className="text-primary mr-3" size={28} />
-                    <h2 className="text-2xl font-bold text-primary">{t('cv.experience.title')}</h2>
-                  </div>
-                  
-                  <div className="space-y-4">
-                    {[t('cv.experience.audit'), t('cv.experience.secure'), t('cv.experience.infra'), t('cv.experience.supervision')].map((exp, i) => (
-                      <div key={i} className="bg-gray-50 p-4 rounded-lg">
-                        <p className="text-gray-700 text-sm leading-relaxed">{exp}</p>
+                    {[
+                      { n: 1, date: '2026 - 2027' },
+                      { n: 2, date: '2023 - 2024' },
+                      { n: 3, date: '2023 - 2024' },
+                      { n: 4, date: '2024 - 2025' },
+                    ].map((d) => (
+                      <div
+                        key={d.n}
+                        className={`border-l-4 pl-6 ${d.n % 2 === 1 ? 'border-primary' : 'border-secondary'}`}
+                      >
+                        <h3 className="font-bold text-lg">{t(`cv.dipl.${d.n}.title`)}</h3>
+                        <p className="text-secondary font-semibold">{d.date}</p>
+                        <p className="text-gray-600">{t(`cv.dipl.${d.n}.school`)}</p>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Projet futur */}
+                {/* Stage */}
+                <div>
+                  <div className="flex items-center mb-4">
+                    <Briefcase className="text-primary mr-3" size={28} />
+                    <h2 className="text-2xl font-bold text-primary">{t('cv.internship.title')}</h2>
+                  </div>
+                  <p className="text-secondary font-semibold mb-4">{t('cv.internship.company')}</p>
+
+                  <div className="space-y-4">
+                    {[1, 2, 3, 4].map((n) => (
+                      <div key={n} className="bg-gray-50 p-4 rounded-lg">
+                        <p className="font-semibold text-primary mb-1">{t(`cv.internship.${n}.title`)}</p>
+                        <p className="text-gray-700 text-sm leading-relaxed">{t(`cv.internship.${n}.desc`)}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Projets réseaux académiques */}
+                <div>
+                  <div className="flex items-center mb-6">
+                    <Target className="text-secondary mr-3" size={28} />
+                    <h2 className="text-2xl font-bold text-secondary">{t('cv.projects.title')}</h2>
+                  </div>
+
+                  <div className="space-y-4">
+                    {[1, 2, 3].map((n) => (
+                      <div key={n} className="bg-gray-50 p-4 rounded-lg">
+                        <p className="font-semibold text-secondary mb-1">{t(`cv.projects.${n}.title`)}</p>
+                        <p className="text-gray-700 text-sm leading-relaxed">{t(`cv.projects.${n}.desc`)}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Projet professionnel */}
                 <div>
                   <div className="flex items-center mb-6">
                     <Target className="text-secondary mr-3" size={28} />
                     <h2 className="text-2xl font-bold text-secondary">{t('cv.future.title')}</h2>
                   </div>
-                  
+
                   <div className="bg-gradient-to-r from-primary to-secondary text-white p-6 rounded-lg">
                     <p className="leading-relaxed">{t('cv.future.desc')}</p>
                   </div>
@@ -243,3 +223,4 @@ const CV = () => {
 };
 
 export default CV;
+

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Linkedin, Send, User, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,6 +5,10 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
+
+// ⚠️ Remplace xxxxxxxx par l'identifiant de ton formulaire Formspree
+// (visible sur formspree.io, de la forme https://formspree.io/f/abcdwxyz)
+const FORMSPREE_URL = 'https://formspree.io/f/xoejjlpl';
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -15,6 +18,7 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const [isSending, setIsSending] = useState(false);
   const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -22,8 +26,9 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: t('contact.form.error.title'),
@@ -32,16 +37,43 @@ const Contact = () => {
       });
       return;
     }
-    toast({
-      title: t('contact.form.success.title'),
-      description: t('contact.form.success.desc'),
-    });
-    setFormData({ name: '', email: '', subject: '', message: '' });
+
+    setIsSending(true);
+    try {
+      const response = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || 'Message depuis le portfolio',
+          message: formData.message,
+        }),
+      });
+
+      if (!response.ok) throw new Error('Envoi impossible');
+
+      toast({
+        title: t('contact.form.success.title'),
+        description: t('contact.form.success.desc'),
+      });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch {
+      toast({
+        title: t('contact.form.error.title'),
+        description: t('contact.form.error.send'),
+        variant: "destructive",
+      });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const contactInfo = [
-    { icon: Phone, label: t('contact.phone'), value: "06 92 63 92 03", href: "tel:0692639203", color: "bg-blue-500" },
-    { icon: Mail, label: "Email", value: "alexpinguin450@gmail.com", href: "mailto:alexpinguin450@gmail.com", color: "bg-green-500" },
+    { icon: Mail, label: "Email", value: "a.pinguin@rt-iut.re.com", href: "mailto:a.pinguin@rt-iut.re.com", color: "bg-green-500" },
     { icon: MapPin, label: t('contact.location'), value: "Saint-Louis, La Réunion", href: "#", color: "bg-purple-500" },
     { icon: Linkedin, label: "LinkedIn", value: "alexandre-pinguin", href: "https://www.linkedin.com/in/alexandre-pinguin-071b4531a", color: "bg-blue-600" },
   ];
@@ -118,9 +150,9 @@ const Contact = () => {
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">{t('contact.form.message')} *</label>
                   <Textarea id="message" name="message" value={formData.message} onChange={handleInputChange} placeholder={t('contact.form.message.placeholder')} rows={6} className="w-full" required />
                 </div>
-                <Button type="submit" className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center">
+                <Button type="submit" disabled={isSending} className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center disabled:opacity-60">
                   <Send className="mr-2" size={20} />
-                  {t('contact.form.send')}
+                  {isSending ? t('contact.form.sending') : t('contact.form.send')}
                 </Button>
               </form>
               <p className="text-sm text-gray-500 mt-4 text-center">{t('contact.form.required')}</p>
