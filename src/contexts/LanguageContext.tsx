@@ -18,7 +18,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.contact': 'Contact',
 
     // Home
-    'home.hero.title': 'Bienvenue sur mon site',
+    'home.hero.title': 'Bienvenue sur mon Portfolio',
     'home.hero.name': 'Alexandre Pinguin',
     'home.hero.subtitle': 'Étudiant en Troisième année de BUT Réseaux et Télécommunications - Parcours cybersécurité',
     'home.hero.cta1': 'Découvrir mon profil',
@@ -64,7 +64,18 @@ const translations: Record<Language, Record<string, string>> = {
     'about.qualities.adaptable.title': 'Adaptable',
     'about.qualities.adaptable.desc': "Capacité à m'ajuster rapidement aux nouvelles situations et défis.",
 
-       // CV
+ 'network.title': 'My world: networks',
+    'network.subtitle': 'A glimpse of what I design, configure and secure every day in my Networks & Telecom degree.',
+    'network.alt': 'Animated network diagram: Internet, pfSense firewall, switch and three VLANs (workstations, servers, Wi-Fi)',
+    'network.caption': 'Typical topology: VLAN segmentation behind a pfSense firewall.',
+    'network.internet': 'Internet',
+    'network.firewall': 'pfSense firewall',
+    'network.switch': 'Switch',
+    'network.vlan.pc': 'Workstations',
+    'network.vlan.srv': 'Servers',
+    'network.vlan.wifi': 'Wi-Fi',
+
+      // CV
     'cv.title': 'ALEXANDRE PINGUIN',
     'cv.subtitle': 'Alternant Infrastructures IT (Support, Systèmes, Réseaux, Sécurité)',
     'cv.download': 'Télécharger mon CV',
@@ -149,6 +160,23 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.skills.monitoring.desc': 'Surveillance et alertes',
     'projects.skills.telecom': 'Télécom',
     'projects.skills.telecom.desc': 'Codecs et transmission',
+
+
+  // Ce que j'ai Apprit 
+     'projects.learned': "Ce que j'ai appris",
+    'projects.internship': 'Stage',
+    'project.cyber.learned': "J'ai appris à vulgariser des notions de cybersécurité pour un public non spécialiste, à identifier les menaces actuelles et à présenter des bonnes pratiques simples pour protéger ses données.",
+    'project.MFA.learned': "J'ai appris à déployer et administrer une solution de sécurité centralisée (ESET Protect), à superviser et réagir aux incidents avec un EDR (ESET Inspect), et à mettre en place une authentification multi-facteur pour sécuriser les accès en environnement professionnel.",
+    'project.temp.learned': "J'ai appris à concevoir un système de mesure avec des capteurs connectés, à surveiller des températures en temps réel et à configurer des alertes en cas de dépassement de seuils critiques.",
+    'project.crypto.learned': "J'ai appris à chiffrer des données sous Linux avec Gocryptfs et LUKS, à comparer leurs avantages, leurs limites et leurs performances, et à choisir la solution adaptée à un besoin précis.",
+    'project.network.learned': "J'ai appris à concevoir et déployer un réseau sécurisé de bout en bout : segmentation en VLANs, DMZ, services réseau (HTTP, FTP, DHCP, SSH), configuration d'un pare-feu pfSense et rédaction d'une documentation technique.",
+    'project.telecom.learned': "J'ai appris à caractériser et mesurer un système télécom, à comprendre le fonctionnement du codec G.711 et à analyser la qualité de transmission dans différentes conditions.",
+    'project.supervision.learned': "J'ai appris à mettre en place une console de supervision, à suivre l'état des équipements réseau, à conserver un historique des pannes et à configurer des alertes pour une maintenance proactive.",
+    'project.safescreen.learned': "J'ai appris à prendre en charge la partie cybersécurité d'un projet : sécuriser un réseau d'écrans, mettre en place des contrôles d'accès, protéger les données des résidents et définir des politiques de sécurité.",
+    'project.integratif.learned': "J'ai appris à interconnecter deux sites avec pfSense, à segmenter le réseau par VLANs selon les catégories d'utilisateurs, à déployer des serveurs Samba et Moodle et à sécuriser l'ensemble avec des pare-feux.",
+    'project.iutfam.learned': "J'ai appris à travailler en équipe sur une plateforme web complète (chat, événements, espace communautaire) et à intégrer la sécurité dans la conception d'un outil de communication.",
+
+
     // Project items
     'project.cyber.title': 'Projet de sensibilisation à la cybersécurité',
     'project.cyber.desc': 'Sensibiliser le public aux bonnes pratiques de sécurité.',
@@ -231,7 +259,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.contact': 'Contact',
 
     // Home
-    'home.hero.title': 'Welcome to my website',
+    'home.hero.title': 'Welcome to my portfolio',
     'home.hero.name': 'Alexandre Pinguin',
     'home.hero.subtitle': 'Third-year student in Networks & Telecommunications – Cybersecurity track',
     'home.hero.cta1': 'Discover my profile',
@@ -246,6 +274,18 @@ const translations: Record<Language, Record<string, string>> = {
     'home.cta.title': 'Open to opportunities',
     'home.cta.desc': 'Currently looking for an apprenticeship or internship as a network technician/administrator or information security officer. Feel free to contact me!',
     'home.cta.button': 'Contact me',
+
+    //SCHEMA 
+        'network.title': 'Mon univers : les réseaux',
+    'network.subtitle': 'Un aperçu de ce que je conçois, configure et sécurise au quotidien en BUT R&T.',
+    'network.alt': 'Schéma réseau animé : Internet, pare-feu pfSense, switch et trois VLANs (postes, serveurs, Wi-Fi)',
+    'network.caption': 'Topologie type : segmentation en VLANs derrière un pare-feu pfSense.',
+    'network.internet': 'Internet',
+    'network.firewall': 'Pare-feu pfSense',
+    'network.switch': 'Switch',
+    'network.vlan.pc': 'Postes',
+    'network.vlan.srv': 'Serveurs',
+    'network.vlan.wifi': 'Wi-Fi',
 
     // About
     'about.title': 'About me',
@@ -277,7 +317,8 @@ const translations: Record<Language, Record<string, string>> = {
     'about.qualities.adaptable.title': 'Adaptable',
     'about.qualities.adaptable.desc': 'Ability to quickly adjust to new situations and challenges.',
 
-      // CV
+    
+    // CV
     'cv.title': 'ALEXANDRE PINGUIN',
     'cv.subtitle': 'Work-Study IT Infrastructure (Support, Systems, Networks, Security)',
     'cv.download': 'Download my resume',
@@ -362,6 +403,22 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.skills.monitoring.desc': 'Surveillance and alerts',
     'projects.skills.telecom': 'Telecom',
     'projects.skills.telecom.desc': 'Codecs and transmission',
+    
+    //Ce que j'ai appris (EN)
+      'projects.learned': 'What I learned',
+    'projects.internship': 'Internship',
+    'project.cyber.learned': 'I learned to explain cybersecurity concepts to a non-specialist audience, identify current threats and present simple best practices to protect personal data.',
+    'project.MFA.learned': 'I learned to deploy and administer a centralized security solution (ESET Protect), to monitor and respond to incidents with an EDR (ESET Inspect), and to set up multi-factor authentication to secure access in a professional environment.',
+    'project.temp.learned': 'I learned to design a measurement system with connected sensors, monitor temperatures in real time and configure alerts when critical thresholds are exceeded.',
+    'project.crypto.learned': 'I learned to encrypt data on Linux with Gocryptfs and LUKS, compare their advantages, limits and performance, and choose the right solution for a specific need.',
+    'project.network.learned': 'I learned to design and deploy a secure network end to end: VLAN segmentation, DMZ, network services (HTTP, FTP, DHCP, SSH), pfSense firewall configuration and technical documentation.',
+    'project.telecom.learned': 'I learned to characterize and measure a telecom system, understand how the G.711 codec works and analyze transmission quality under different conditions.',
+    'project.supervision.learned': 'I learned to set up a monitoring console, track the status of network equipment, keep an outage history and configure alerts for proactive maintenance.',
+    'project.safescreen.learned': 'I learned to take charge of the cybersecurity side of a project: securing a screen network, implementing access controls, protecting residents\' data and defining security policies.',
+    'project.integratif.learned': 'I learned to interconnect two sites with pfSense, segment the network with VLANs by user category, deploy Samba and Moodle servers and secure everything with firewalls.',
+    'project.iutfam.learned': 'I learned to work as a team on a complete web platform (chat, events, community space) and to build security into the design of a communication tool.',
+ 
+
     // Project items
     'project.cyber.title': 'Cybersecurity Awareness Project',
     'project.cyber.desc': 'Raising public awareness of security best practices.',

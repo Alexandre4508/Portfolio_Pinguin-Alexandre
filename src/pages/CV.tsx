@@ -19,12 +19,15 @@ const CV = () => {
               <h1 className="text-4xl font-bold mb-2">{t('cv.title')}</h1>
               <p className="text-xl text-blue-100 mb-4">{t('cv.subtitle')}</p>
               
-              <a href="/PINGUIN-Alexandre-CV.pdf" download>
-                <Button className="mb-6 bg-white/20 border border-white/40 text-white hover:bg-white hover:text-primary">
-                  <Download size={16} />
-                  {t('cv.download')}
-                </Button>
-              </a>
+             <Button
+  asChild
+  className="mb-6 bg-white/20 border border-white/40 text-white hover:bg-white hover:text-primary"
+>
+  <a href="/CV_PINGUIN_Alexandre.pdf" download="CV-Alexandre-Pinguin.pdf">
+    <Download size={16} />
+    {t('cv.download')}
+  </a>
+</Button>
               
               <div className="flex flex-wrap justify-center gap-6 text-sm">
                 <div className="flex items-center">

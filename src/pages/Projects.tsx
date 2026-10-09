@@ -1,5 +1,4 @@
-
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -15,7 +14,10 @@ import projectIutfam from '@/assets/project-iutfam.png';
 const Projects = () => {
   const { t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [openLearned, setOpenLearned] = useState<number | null>(null);
 
+  // Pour ajouter "Ce que j'ai appris" à un projet : ajoute learnedKey: 'project.xxx.learned'
+  // et crée la clé correspondante en FR et en EN dans LanguageContext.tsx
   const projects = [
     {
       titleKey: 'project.cyber.title',
@@ -23,6 +25,7 @@ const Projects = () => {
       image: projectCybersecurite,
       color: "bg-red-500",
       detailsKey: 'project.cyber.details',
+      learnedKey: 'project.cyber.learned',
       link: "https://www.canva.com/design/DAGQh8EQjn0/ch8vVTu9xtW0kEJTZ6uq5Q/view?utm_content=DAGQh8EQjn0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h7e927ec9b2"
     },
     {
@@ -31,16 +34,17 @@ const Projects = () => {
       image: projectMFA,
       color: "bg-blue-500",
       detailsKey: 'project.MFA.details',
+      learnedKey: 'project.MFA.learned',
+      tagKey: 'projects.internship',
       link: "https://canva.link/b7rzmsr5egtpkwd"
     },
-    
-
     {
       titleKey: 'project.temp.title',
       descKey: 'project.temp.desc',
       image: projectTemperature,
       color: "bg-orange-500",
       detailsKey: 'project.temp.details',
+      learnedKey: 'project.temp.learned',
       link: "https://www.canva.com/design/DAGZn8ZIOGY/qu6FO5sqV_fFafIZaeDIAQ/view?utm_content=DAGZn8ZIOGY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hadb3f10e72"
     },
     {
@@ -49,6 +53,7 @@ const Projects = () => {
       image: null,
       color: "bg-purple-500",
       detailsKey: 'project.crypto.details',
+      learnedKey: 'project.crypto.learned',
     },
     {
       titleKey: 'project.network.title',
@@ -56,6 +61,7 @@ const Projects = () => {
       image: projectReseau,
       color: "bg-blue-500",
       detailsKey: 'project.network.details',
+      learnedKey: 'project.network.learned',
       link: "https://www.canva.com/design/DAGmsNC98MY/wbq2buJu20wdJQ40GmCbeg/view?utm_content=DAGmsNC98MY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h474305b08d"
     },
     {
@@ -64,6 +70,7 @@ const Projects = () => {
       image: null,
       color: "bg-green-500",
       detailsKey: 'project.telecom.details',
+      learnedKey: 'project.telecom.learned',
     },
     {
       titleKey: 'project.supervision.title',
@@ -71,6 +78,7 @@ const Projects = () => {
       image: projectSupervision,
       color: "bg-indigo-500",
       detailsKey: 'project.supervision.details',
+      learnedKey: 'project.supervision.learned',
     },
     {
       titleKey: 'project.safescreen.title',
@@ -78,6 +86,7 @@ const Projects = () => {
       image: projectSafescreen,
       color: "bg-teal-500",
       detailsKey: 'project.safescreen.details',
+      learnedKey: 'project.safescreen.learned',
       link: "https://www.canva.com/design/DAHDDIfdgKo/bmvAC1lapHD7vFoCG7xMpA/view?utm_content=DAHDDIfdgKo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h236819d34c"
     },
     {
@@ -86,6 +95,7 @@ const Projects = () => {
       image: projectIntegratif,
       color: "bg-cyan-500",
       detailsKey: 'project.integratif.details',
+      learnedKey: 'project.integratif.learned',
     },
     {
       titleKey: 'project.iutfam.title',
@@ -93,6 +103,7 @@ const Projects = () => {
       image: projectIutfam,
       color: "bg-emerald-500",
       detailsKey: 'project.iutfam.details',
+      learnedKey: 'project.iutfam.learned',
     }
   ];
 
@@ -148,9 +159,33 @@ const Projects = () => {
                 </div>
               </div>
 
+              {/* Ce que j'ai appris (cliquable) */}
+              {project.learnedKey && (
+                <div className="px-6 pb-4">
+                  <button
+                    onClick={() => setOpenLearned(openLearned === index ? null : index)}
+                    aria-expanded={openLearned === index}
+                    className="flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                  >
+                    {t('projects.learned')}
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-300 ${openLearned === index ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+                  {openLearned === index && (
+                    <p className="mt-2 text-sm text-gray-600 leading-relaxed bg-tech-blue-light p-3 rounded-lg">
+                      {t(project.learnedKey)}
+                    </p>
+                  )}
+                </div>
+              )}
+
               <div className="bg-gray-50 px-6 py-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500 font-medium">{t('projects.academic')}</span>
+                  <span className="text-sm text-gray-500 font-medium">
+                    {t(project.tagKey ?? 'projects.academic')}
+                  </span>
                   <div className="flex items-center gap-3">
                     {project.link && (
                       <a

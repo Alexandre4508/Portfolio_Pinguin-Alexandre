@@ -73,7 +73,8 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: Mail, label: "Email", value: "a.pinguin@rt-iut.re.com", href: "mailto:a.pinguin@rt-iut.re.com", color: "bg-green-500" },
+    { icon: Mail, label: "Email", value: "a.pinguin@rt-iut.re", href: "mailto:a.pinguin@rt-iut.re.com", color: "bg-green-500" },
+    {icon: Phone, label: "Mobile", value: "06 92 63 92 03", href: "tel:0692639203", color: "bg-yellow-500" },
     { icon: MapPin, label: t('contact.location'), value: "Saint-Louis, La Réunion", href: "#", color: "bg-purple-500" },
     { icon: Linkedin, label: "LinkedIn", value: "alexandre-pinguin", href: "https://www.linkedin.com/in/alexandre-pinguin-071b4531a", color: "bg-blue-600" },
   ];

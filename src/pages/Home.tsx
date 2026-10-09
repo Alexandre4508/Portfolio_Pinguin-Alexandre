@@ -3,6 +3,7 @@ import { ArrowRight, Network, Shield, Code } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import heroBg from '@/assets/hero-bg.jpeg';
+import NetworkDiagram from '@/components/NetworkDiagram';
 
 const Home = () => {
   const { t } = useLanguage();
@@ -16,31 +17,39 @@ const Home = () => {
           style={{ backgroundImage: `url(${heroBg})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-tech-blue-dark/70 to-secondary/80" />
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              {t('home.hero.title')}
-            </h1>
-            <h2 className="text-2xl md:text-3xl mb-8 text-blue-100">
-              {t('home.hero.name')}
-            </h2>
-            <p className="text-xl md:text-2xl mb-12 text-blue-200 max-w-3xl mx-auto">
-              {t('home.hero.subtitle')}
-            </p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <Link 
-                to="/about" 
-                className="bg-secondary hover:bg-secondary-dark px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
-              >
-                {t('home.hero.cta1')}
-                <ArrowRight className="ml-2" size={20} />
-              </Link>
-              <Link 
-                to="/projects" 
-                className="bg-transparent border-2 border-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center"
-              >
-                {t('home.hero.cta2')}
-              </Link>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Texte (à gauche sur grand écran) */}
+            <div className="animate-fade-in text-center lg:text-left">
+              <h1 className="text-5xl md:text-7xl lg:text-6xl xl:text-7xl font-bold mb-6">
+                {t('home.hero.title')}
+              </h1>
+              <h2 className="text-2xl md:text-3xl mb-8 text-blue-100">
+                {t('home.hero.name')}
+              </h2>
+              <p className="text-xl md:text-2xl mb-12 text-blue-200 max-w-3xl mx-auto lg:mx-0">
+                {t('home.hero.subtitle')}
+              </p>
+              <div className="flex flex-col md:flex-row gap-4 justify-center lg:justify-start">
+                <Link 
+                  to="/about" 
+                  className="bg-secondary hover:bg-secondary-dark px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl"
+                >
+                  {t('home.hero.cta1')}
+                  <ArrowRight className="ml-2" size={20} />
+                </Link>
+                <Link 
+                  to="/projects" 
+                  className="bg-transparent border-2 border-white hover:bg-white hover:text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center"
+                >
+                  {t('home.hero.cta2')}
+                </Link>
+              </div>
+            </div>
+
+            {/* Schéma réseau animé (à droite sur grand écran) */}
+            <div className="animate-fade-in">
+              <NetworkDiagram variant="side" />
             </div>
           </div>
         </div>
